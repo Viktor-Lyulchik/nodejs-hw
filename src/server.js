@@ -4,7 +4,7 @@ import pino from 'pino-http';
 import 'dotenv/config';
 
 const app = express();
-// Використовуємо значення з .env або дефолтний порт 3000
+
 const PORT = process.env.PORT ?? 3030;
 
 // Middleware для парсингу JSON
