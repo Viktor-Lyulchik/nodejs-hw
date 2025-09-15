@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "Viktor Liulchyk <viktor.lyulchik@gmail.com>",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "eslint": "^9.35.0",
+    "globals": "^16.4.0",
+    "nodemon": "^3.1.10",
+    "typescript-eslint": "^8.43.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pino-http": "^10.5.0",
+    "pino-pretty": "^13.1.1"
+  }
+}
