@@ -29,11 +29,9 @@ app.use(
 
 // Список усіх нотаток
 app.get('/notes', (req, res) => {
-  res.status(200).json([
-    {
-      message: 'Retrieved all notes',
-    },
-  ]);
+  res.status(200).json({
+    message: 'Retrieved all notes',
+  });
 });
 
 // Конкретна нотатка за id
