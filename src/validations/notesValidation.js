@@ -16,14 +16,15 @@ export const updateNoteSchema = {
       'string.min': 'Title should have at least {#limit} characters',
       'any.required': 'Title is required',
     }),
-    content: Joi.string().messages({
+    content: Joi.string().allow('').messages({
       'string.base': 'Content must be a string',
     }),
-    tags: Joi.string()
+    tag: Joi.string()
       .valid(...TAGS)
+      .optional()
       .messages({
-        'any.only': `Tags must be one of: ${TAGS.join(',')}`,
-        'any.required': 'Gender is required',
+        'any.only': `Tag must be one of: ${TAGS.join(',')}`,
+        'any.required': 'Tag is required',
       }),
   }).min(1),
 };
@@ -41,15 +42,15 @@ export const createNoteSchema = {
       'string.min': 'Title should have at least {#limit} characters',
       'any.required': 'Title is required',
     }),
-    content: Joi.string().messages({
+    content: Joi.string().allow('').messages({
       'string.base': 'Content must be a string',
     }),
-    tags: Joi.string()
+    tag: Joi.string()
       .valid(...TAGS)
       .required()
       .messages({
-        'any.only': `Tags must be one of: ${TAGS.join(',')}`,
-        'any.required': 'Gender is required',
+        'any.only': `Tag must be one of: ${TAGS.join(',')}`,
+        'any.required': 'Tag is required',
       }),
   }),
 };
@@ -58,7 +59,9 @@ export const getAllNotesSchema = {
   [Segments.QUERY]: Joi.object({
     page: Joi.number().integer().min(1).default(1),
     perPage: Joi.number().integer().min(5).max(20).default(10),
-    tag: Joi.string().valid(...TAGS),
-    search: Joi.string().default(''),
+    tag: Joi.string()
+      .valid(...TAGS)
+      .optional(),
+    search: Joi.string().optional().allow(''),
   }),
 };
