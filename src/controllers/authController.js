@@ -120,7 +120,7 @@ export const requestResetEmail = async (req, res, next) => {
     link: `${env('FRONTEND_DOMAIN')}/reset-password?token=${resetToken}`,
   });
 
-  // console.log(html);
+  console.log(html);
 
   try {
     await sendMail({
