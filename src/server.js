@@ -10,9 +10,10 @@ import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import { env } from './utils/env.js';
 
 const app = express();
-const PORT = process.env.PORT ?? 3030;
+const PORT = env('PORT', 3030);
 
 app.use(express.json());
 app.use(cors());
