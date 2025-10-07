@@ -120,6 +120,12 @@ export const requestResetEmail = async (req, res, next) => {
     link: `${env('FRONTEND_DOMAIN')}/reset-password?token=${resetToken}`,
   });
 
+  const text = `Hello ${
+    user.username
+  },\n\nPlease reset your password by clicking the link: ${env(
+    'FRONTEND_DOMAIN',
+  )}/reset-password?token=${resetToken}`;
+
   // console.log(html);
 
   try {
@@ -127,7 +133,8 @@ export const requestResetEmail = async (req, res, next) => {
       from: env('SMTP_FROM'),
       to: email,
       subject: 'Reset your password',
-      html,
+      html: html,
+      text: text,
     });
   } catch {
     next(
